@@ -224,7 +224,7 @@ var newExplicitLists = explicitList.toList() // Converts Iterable<E> to List<E>
 /// supported features, starting with forEach,map and where.
 var example9Array = const ["a", "b"];
 example9() {
-  for (final i = 0; i < example9Array.length; i++) {
+  for (int i = 0; i < example9Array.length; i++) {
     print("Example9 for loop '${example9Array[i]}'");
   }
   var i = 0;
@@ -256,25 +256,29 @@ example10() {
 /// `int` and `double` are children of type `num`
 example11() {
   var i = 1 + 320, d = 3.2 + 0.01;
+  final num myFinalNumDouble = 2.2;
+  final num myFinalNumInt = 2;
+  final int myFinalInt = 1;
+  final double myFinalDouble = 0.1;
   num myNumDouble = 2.2;
   num myNumInt = 2;
   int myInt = 1;
   double myDouble = 0; // Dart will add decimal prefix, becomes 0.0;
-  myNumDouble = myInt; // valid
-  myNumDouble = myDouble; //valid
-  myNumDouble = myNumInt; //valid
+  myNumDouble = myFinalInt; // valid
+  myNumDouble = myFinalDouble; // valid
+  myNumDouble = myFinalNumInt; // valid
 
-  myNumInt = myInt; // valid
-  myNumInt = myDouble; // valid
-  myNumInt = myNumDouble; // valid
+  myNumInt = myFinalInt; // valid
+  myNumInt = myFinalDouble; // valid
+  myNumInt = myFinalNumDouble; // valid
 
-  myInt = myNumDouble; //Error
-  myInt = myDouble; //Error
-  myInt = myNumInt; //valid
+  myInt = myNumDouble; // error
+  myInt = myFinalDouble; // error
+  myInt = myFinalNumInt; // valid
 
-  myDouble = myInt; //error
-  myDouble = myNumInt; //valid
-  myDouble = myNumDouble; //valid
+  myDouble = myFinalInt; // error
+  myDouble = myFinalNumInt; // error
+  myDouble = myFinalNumDouble; // valid
 
   print("Example11 int ${i}");
   print("Example11 double ${d}");
